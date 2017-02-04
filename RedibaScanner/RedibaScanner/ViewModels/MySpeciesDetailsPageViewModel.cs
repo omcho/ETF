@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using RedibaScanner.Models;
-
 namespace RedibaScanner.ViewModels
 {
     public class MySpeciesDetailsPageViewModel : INotifyPropertyChanged
