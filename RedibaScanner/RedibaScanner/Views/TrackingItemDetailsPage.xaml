@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedibaScanner.Views.TrackingItemDetailsPage"
+             Title ="Tok analize uzorka">
+  
+  <ContentPage.Content>
+
+    <StackLayout>
+      <ListView ItemsSource="{Binding list}"
+                               HasUnevenRows="true"
+                              GroupShortNameBinding = "{Binding Key}"
+                      IsGroupingEnabled = "false"
+                              GroupDisplayBinding = "{Binding Key}"
+                        ItemTapped="Handle_ItemTapped"
+                    ItemSelected="Handle_ItemSelected"
+                            >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+
+              <Frame Padding="0,0,0,3">
+                <Frame.Content>
+                  <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                    <Frame.Content>
+                      <StackLayout Padding="20,0,0,0"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding Description}"
+                               FontFamily="OpenSans-Light"
+                               FontSize="9"
+                               TextColor="#69add1"/>
+                      </StackLayout>
+                    </Frame.Content>
+
+                  </Frame>
+                </Frame.Content>
+
+              </Frame>
+
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedibaScanner.MenuPage">
+  <StackLayout Padding="10">
+    <Button BorderRadius="0" BorderWidth="0" Text="Informacije"  Clicked="Idemo" ></Button>
+    <Button BorderRadius="0" BorderWidth="0"  Text="Istraži"  Clicked="Explore" ></Button>
+    <Button BorderRadius="0" BorderWidth="0" Text="Moja vrsta"  Clicked="MySubmit" ></Button>
+    <Button BorderRadius="0" BorderWidth="0"   Text="Moj Rezultat"  Clicked="MyResult" ></Button>
+    
+  </StackLayout>
+</ContentPage>

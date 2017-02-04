@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedibaScanner.Views.MySpeciesDetailsPage"
+             xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             Title ="{Binding species.FullName}">
+  
+  <ContentPage.Content>
+
+    <StackLayout>
+
+      <Label Text="{Binding species.FullName}"/>
+                               
+      
+              
+                  <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                    <Frame.Content>
+                      <ScrollView Orientation="Horizontal">
+                      <StackLayout Padding="20,0,0,0">
+                        <Label Text="Barkod (DNK)"
+                               FontFamily="OpenSans-Light"
+                               FontSize="10"
+                               />
+                        <Label Text="{Binding species.BarCode}"
+                               FontFamily="OpenSans-Light"
+                               FontSize="13"
+                               />
+                      </StackLayout>
+                      </ScrollView>
+                    </Frame.Content>
+              </Frame>
+
+      <Label Text="Podaci o uzorku"/>
+          <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+            <Frame.Content>
+              <StackLayout Padding="20,0,0,0">
+                <Label Text="Barkod (DNK)"
+                       FontFamily="OpenSans-Light"
+                       FontSize="10"
+                               />
+                <Label Text="{Binding species.Notes}"
+                       FontFamily="OpenSans-Light"
+                       FontSize="13"
+                               />
+                <Label Text="Barkod (DNK)"
+                       FontFamily="OpenSans-Light"
+                       FontSize="10"
+                               />
+                <Label Text="{Binding species.Notes}"
+                       FontFamily="OpenSans-Light"
+                       FontSize="13"
+                               />
+                <Label Text="Barkod (DNK)"
+                       FontFamily="OpenSans-Light"
+                       FontSize="10"
+                               />
+                <Label Text="{Binding species.Notes}"
+                       FontFamily="OpenSans-Light"
+                       FontSize="13"
+                               />
+              </StackLayout>
+            </Frame.Content>
+      </Frame>
+      
+               <controls:CarouselView x:Name ="AdditionalImagess" ItemsSource="{Binding species.AdditionalImages}">
+                    <controls:CarouselView.ItemTemplate>                   
+                                <DataTemplate>
+                                  <StackLayout>
+                                    <Image Source="{Binding Url}" >
+                                      <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding PictureTapCommand}"
+                                            CommandParameter="{Binding .}" />
+                                      </Image.GestureRecognizers>
+                                    </Image>
+                                    </StackLayout>
+                                </DataTemplate>
+                    </controls:CarouselView.ItemTemplate>
+                    </controls:CarouselView>
+              
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

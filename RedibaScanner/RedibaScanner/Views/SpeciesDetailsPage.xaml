@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedibaScanner.Views.SpeciesDetailsPage"
+             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             Title ="{Binding Name}"
+             >
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout Padding="10">
+        <Image
+                HeightRequest="200"
+                WidthRequest="200"
+                HorizontalOptions="CenterAndExpand"
+                Aspect="AspectFill"
+                Source="{Binding Image}"/>
+        <Label Text="{Binding Name}" FontAttributes="Bold"/>
+        <Label Text="{Binding Description}" FontSize="Micro"/>
+        <Label Text="AAAAA" FontAttributes="Bold"/>
+
+        <Label Text="Slike" FontAttributes="Bold"/>
+        <ListView ItemsSource="{Binding Images}"
+                             
+                            >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+
+                  <Image
+      HeightRequest="66"
+      HorizontalOptions="CenterAndExpand"
+      VerticalOptions="CenterAndExpand"
+      Aspect="AspectFill"
+                         WidthRequest="66"
+                         Grid.RowSpan="2"
+                         Source="{Binding Url}"/>
+                  <Label Grid.Column="1"
+                         Text="{Binding ShortDesc}"
+       VerticalOptions="End"/>
+                  <Label Grid.Column="1"
+                         Grid.Row="1"
+                         VerticalOptions="Start"
+                         Text="{Binding ShortDesc}"/>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        
+        <!--<forms:CarouselView ItemsSource="{Binding SpeciesSearchInfoColl}" x:Name="CarouselZoos">
+          <forms:CarouselView.ItemTemplate>
+            <DataTemplate>
+              <Image Source="{Binding Image}" />
+            </DataTemplate>
+          </forms:CarouselView.ItemTemplate>
+        </forms:CarouselView>-->
+
+
+        <Label Text="Mapa" FontAttributes="Bold"/>
+
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>
