@@ -47,6 +47,7 @@
     <Compile Include="Repository\Grouping.cs" />
     <Compile Include="Repository\SpeciesRepository.cs" />
     <Compile Include="ViewModels\MyResultPageViewModel.cs" />
+    <Compile Include="ViewModels\MySubmitInfoPageViewModel.cs" />
     <Compile Include="ViewModels\MySubmitPageViewModel.cs" />
     <Compile Include="ViewModels\MySpeciesDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\SpeciesDetailsViewModel.cs" />

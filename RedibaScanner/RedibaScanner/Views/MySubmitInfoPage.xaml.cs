@@ -9,9 +9,9 @@ using Xamarin.Forms;
 
 namespace RedibaScanner.Views
 {
-    public partial class MySpeciesDetailsPage : ContentPage
+    public partial class MySubmitInfoPage : ContentPage
     {
-        public MySpeciesDetailsPage()
+        public MySubmitInfoPage()
         {
             InitializeComponent();
             /*AdditionalImagess.ItemSelected += (sender, args) =>

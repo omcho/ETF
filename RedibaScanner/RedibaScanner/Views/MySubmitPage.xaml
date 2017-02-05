@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RedibaScanner.MySubmitPage">
+             x:Class="RedibaScanner.MySubmitPage"
+             Title ="Moja Vrsta">
+  
   <StackLayout Padding="10">
     <Label Text="{Binding QRCode}"/>
+    <Label Text="{Binding Kingdom}"/>
     <Button BorderRadius="0" BorderWidth="0" Text="Skeniranje tubica" Command="{Binding ScanTubeCommand}"></Button>
     <Button BorderRadius="0" BorderWidth="0"  Text="Slika uzorka"  Clicked="Explore" ></Button>
     <Button BorderRadius="0" BorderWidth="0" Text="Slika lokaliteta"  Clicked="MySubmit" ></Button>
-    <Button BorderRadius="0" BorderWidth="0"   Text="Opšte informacije"  Clicked="MyResult" ></Button>
+    <Button BorderRadius="0" BorderWidth="0"   Text="Opšte informacije"  Command="{Binding MySubmitInfoCommand}" ></Button>
     
   </StackLayout>
 </ContentPage>

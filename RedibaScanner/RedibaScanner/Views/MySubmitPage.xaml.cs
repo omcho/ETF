@@ -81,14 +81,14 @@ namespace RedibaScanner
         //Navigation.PushAsync(new ExplorePage());
         //DisplayAlert("Naslov", "Joj","Idemooo");
 
-        void MyResult(object sender, System.EventArgs e)
+        /*void MySubmitInfo(object sender, System.EventArgs e)
         {
-            MyResultPage a = new MyResultPage();
-            MyResultPageViewModel vm = new MyResultPageViewModel();
+            MySubmitInfoPage a = new MySubmitInfoPage();
+            //MyResultPageViewModel vm = new MyResultPageViewModel();
             a.BindingContext = vm;
             Navigation.PushAsync(a);
             //DisplayAlert("Naslov", "Joj","Idemooo");
-        }
+        }*/
 
         void MySubmit(object sender, System.EventArgs e)
         {

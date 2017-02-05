@@ -11,25 +11,32 @@ using Xamarin.Forms;
 using RedibaScanner.Models;
 using ZXing.Net.Mobile.Forms;
 using System.Runtime.CompilerServices;
+using RedibaScanner.Views;
 
 namespace RedibaScanner.ViewModels
 {
     public class MySubmitPageViewModel : INotifyPropertyChanged
     {
-        public MySubmit SubmitInfo;
+        public MySubmit SubmitInfo { get; set; }
         private string qRCode;
-        public INavigation Navigation;
+        public INavigation Navigation { get; set; }
 
         public ICommand ScanTubeCommand
         {
             get; set;
         }
 
-            public MySubmitPageViewModel(INavigation navigation, MySubmit submitInfo)
+        public ICommand MySubmitInfoCommand
+        {
+            get; set;
+        }
+
+        public MySubmitPageViewModel(INavigation navigation)
         {
             Navigation = navigation;
             ScanTubeCommand = new Command(onScanTubeButton);
-            SubmitInfo = submitInfo;
+            MySubmitInfoCommand = new Command(MySubmitInfo);
+            SubmitInfo = new MySubmit();
         }
         
         void onScanTubeButton () {
@@ -43,7 +50,7 @@ namespace RedibaScanner.ViewModels
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PopAsync();
-                    QRCode = result.Text;
+                    QRCode = "QR Code, Tuba: "+result.Text;
                     await App.Current.MainPage.DisplayAlert("You have connect to .....!", "Would you like to Clock In at once?", "Ok");
                     //await DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
@@ -51,7 +58,16 @@ namespace RedibaScanner.ViewModels
             Navigation.PushAsync(scanPage);
 
         }
-        
+
+        void MySubmitInfo()
+        {
+            MySubmitInfoPage a = new MySubmitInfoPage();
+            MySubmitInfoPageViewModel vm = new MySubmitInfoPageViewModel(Navigation, this);
+            a.BindingContext = vm;
+            Navigation.PushAsync(a);
+            //DisplayAlert("Naslov", "Joj","Idemooo");
+        }
+
         public string QRCode { get { return qRCode; }
             set
             {
@@ -63,9 +79,20 @@ namespace RedibaScanner.ViewModels
                 }
             }
             }
+        public string Kingdom
+        {
+            get { return SubmitInfo.Kingdom; }
+            set
+            {
+                if (qRCode != value)
+                {
+                    SubmitInfo.Kingdom = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-        
-       
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

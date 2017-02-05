@@ -6,78 +6,73 @@
              Title ="Dodatne Informacije">
   
   <ContentPage.Content>
-
+    <ScrollView>
     <StackLayout>
+      <Label Text="{Binding MySubmit.QRCode}"/>
+      <Label Text="{Binding MySubmit.Kingdom}"/>
+      <Label Text="Kraljevstvo/Vrsta"/>
 
-      <Label Text="{Binding species.FullName}"/>
-                               
-      
-              
-                  <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+        <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0">
+                 <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
-                      <ScrollView Orientation="Horizontal">
-                      <StackLayout Padding="20,0,0,0">
-                        <Label Text="Barkod (DNK)"
-                               FontFamily="OpenSans-Light"
-                               FontSize="10"
-                               />
-                        <Label Text="{Binding species.BarCode}"
-                               FontFamily="OpenSans-Light"
-                               FontSize="13"
-                               />
-                      </StackLayout>
-                      </ScrollView>
+                      <ListView x:Name="KingdomListView" SelectedItem="{Binding KingdomSelected, Mode=TwoWay}" ItemsSource="{Binding Kingdom}"
+                                HasUnevenRows="true"
+                            >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+           
+              <TextCell Text="{Binding .}" ></TextCell>
+            
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
                     </Frame.Content>
               </Frame>
-
-      <Label Text="Podaci o uzorku"/>
-          <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
-            <Frame.Content>
-              <StackLayout Padding="20,0,0,0">
-                <Label Text="Barkod (DNK)"
-                       FontFamily="OpenSans-Light"
-                       FontSize="10"
-                               />
-                <Label Text="{Binding species.Notes}"
-                       FontFamily="OpenSans-Light"
-                       FontSize="13"
-                               />
-                <Label Text="Barkod (DNK)"
-                       FontFamily="OpenSans-Light"
-                       FontSize="10"
-                               />
-                <Label Text="{Binding species.Notes}"
-                       FontFamily="OpenSans-Light"
-                       FontSize="13"
-                               />
-                <Label Text="Barkod (DNK)"
-                       FontFamily="OpenSans-Light"
-                       FontSize="10"
-                               />
-                <Label Text="{Binding species.Notes}"
-                       FontFamily="OpenSans-Light"
-                       FontSize="13"
-                               />
-              </StackLayout>
-            </Frame.Content>
-      </Frame>
+          </StackLayout>
       
-               <controls:CarouselView x:Name ="AdditionalImagess" ItemsSource="{Binding species.AdditionalImages}">
-                    <controls:CarouselView.ItemTemplate>                   
-                                <DataTemplate>
-                                  <StackLayout>
-                                    <Image Source="{Binding Url}" >
-                                      <Image.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding PictureTapCommand}"
-                                            CommandParameter="{Binding .}" />
-                                      </Image.GestureRecognizers>
-                                    </Image>
-                                    </StackLayout>
-                                </DataTemplate>
-                    </controls:CarouselView.ItemTemplate>
-                    </controls:CarouselView>
-              
+    
+    <Label Text="Stanovište"/>
+                             <StackLayout VerticalOptions = "FillAndExpand">  
+                 <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                    <Frame.Content>
+                      <ListView x:Name="HabitatListView" SelectedItem="{Binding HabitatSelected, Mode=TwoWay}"
+                                ItemsSource="{Binding Habitat}"
+                                HasUnevenRows="true"
+                            >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+           
+              <TextCell Text="{Binding .}" ></TextCell>
+            
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+                    </Frame.Content>
+              </Frame>
+                               </StackLayout>
+      
+      
+    <Label Text="Vrsta"/>
+                             <StackLayout VerticalOptions = "FillAndExpand">  
+                 <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                    <Frame.Content>
+                      <Entry Text ="{Binding Species}"></Entry>
+                    </Frame.Content>
+              </Frame>
+                               </StackLayout>
+      
+       <Label Text="Bilješke"/>
+                             <StackLayout VerticalOptions = "FillAndExpand">  
+                 <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                    <Frame.Content>
+                      <Editor Text ="{Binding Notes}"></Editor>
+                    </Frame.Content>
+              </Frame>
+                               </StackLayout>
+
+
+
     </StackLayout>
+      </ScrollView>
   </ContentPage.Content>
 </ContentPage>

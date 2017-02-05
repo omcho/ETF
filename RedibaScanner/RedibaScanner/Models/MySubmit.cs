@@ -15,6 +15,9 @@ namespace RedibaScanner.Models
         public string Location { get; set; }
         public string LocationSubmited { get; set; }
         public string LocationText { get; set; }
+        public string Kingdom { get; set; }
+        public string KingdomSubmited { get; set; }
+        public string KingdomText { get; set; }
         public string Habitat { get; set; }
         public string HabitatSubmited { get; set; }
         public string HabitatText { get; set; }
