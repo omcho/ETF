@@ -7,12 +7,16 @@ using RedibaScanner.Views;
 using Xamarin.Forms;
 using RedibaScanner.ViewModels;
 using ZXing.Net.Mobile.Forms;
+using Plugin.Media;
 
 namespace RedibaScanner
 {
     public partial class MySubmitPage : ContentPage
     {
-
+        public MySubmitPage()
+        {
+            InitializeComponent();
+        }
         void TubeScanner(object sender, System.EventArgs e) {
             var scanPage = new ZXingScannerPage();
             scanPage.OnScanResult += (result) =>
@@ -31,11 +35,51 @@ namespace RedibaScanner
             //DisplayAlert("Naslov", "Joj","Idemooo");
         }
 
-        void Explore(object sender, System.EventArgs e)
+        async void Explore(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new ExplorePage());
-            //DisplayAlert("Naslov", "Joj","Idemooo");
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
+                return;
+            }
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Sample",
+                Name = System.DateTime.Now.ToString()+ ".jpg",
+                SaveToAlbum = true  
+            });
+            if (file == null)
+                return;
+            await DisplayAlert("File Location", file.AlbumPath, "OK");
+            /*ContentPage imagePage = new ContentPage();
+            var myImage = new Image() { Aspect = Aspect.AspectFit};
+            myImage.Source = ImageSource.FromFile(file.Path);
+        
+            RelativeLayout layout = new RelativeLayout();
+
+            layout.Children.Add(myImage,
+                Constraint.Constant(0),
+                Constraint.Constant(0),
+                Constraint.RelativeToParent((parent) => { return parent.Width; }),
+                Constraint.RelativeToParent((parent) => { return parent.Height; }));
+
+            imagePage.Content = layout;
+            imagePage.Title = "Test";
+            await Navigation.PushAsync(imagePage);*/
         }
+
+
+        /*image.Source = ImageSource.FromStream(() =>
+        {
+            var stream = file.GetStream();
+            file.Dispose();
+            return stream;
+        });*/
+
+
+
+        //Navigation.PushAsync(new ExplorePage());
+        //DisplayAlert("Naslov", "Joj","Idemooo");
 
         void MyResult(object sender, System.EventArgs e)
         {
@@ -54,9 +98,6 @@ namespace RedibaScanner
             Navigation.PushAsync(a);
             //DisplayAlert("Naslov", "Joj","Idemooo");
         }
-        public MySubmitPage()
-        {
-            InitializeComponent();
-        }
+        
     }
 }

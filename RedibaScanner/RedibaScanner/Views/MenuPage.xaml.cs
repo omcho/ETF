@@ -34,8 +34,8 @@ namespace RedibaScanner
         void MySubmit(object sender, System.EventArgs e)
         {
             var a = new MySubmitPage();
-            //MyResultPageViewModel vm = new MyResultPageViewModel();
-            //a.BindingContext = vm;*/
+            MySubmitPageViewModel vm = new MySubmitPageViewModel(a.Navigation);
+            a.BindingContext = vm;
             Navigation.PushAsync(a);
             //DisplayAlert("Naslov", "Joj","Idemooo");
         }
