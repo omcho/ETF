@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedibaScanner.Views.MySubmitInfoPage"
              xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-             Title ="Dodatne Informacije">
+             Title ="Opšte Informacije">
   
   <ContentPage.Content>
     <ScrollView>
@@ -71,7 +71,7 @@
                                </StackLayout>
 
 
-
+  <Button BorderRadius="0" BorderWidth="0"   Text="Spasi"  Command="{Binding SubmitCommand}" ></Button>
     </StackLayout>
       </ScrollView>
   </ContentPage.Content>

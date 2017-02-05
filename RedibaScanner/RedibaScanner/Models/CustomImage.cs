@@ -12,5 +12,6 @@ namespace RedibaScanner.Models
         public string Url { get; set; }
         public string ShortDesc { get; set; }
         public ICommand PictureTapCommand { get; set; }
-    }
+        public string ImageLocation { get; set; }
+}
 }

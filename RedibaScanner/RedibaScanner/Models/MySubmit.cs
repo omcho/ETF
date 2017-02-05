@@ -9,6 +9,12 @@ namespace RedibaScanner.Models
 {
     public class MySubmit
     {
+        public MySubmit()
+        {
+            SpeciesImage = new CustomImage();
+            LocationImage = new CustomImage();
+        }
+
         public string BarCode { get; set; }
         public CustomImage SpeciesImage { get; set; }
         public CustomImage LocationImage { get; set; }

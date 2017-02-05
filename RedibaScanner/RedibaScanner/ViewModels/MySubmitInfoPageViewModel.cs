@@ -23,6 +23,37 @@ namespace RedibaScanner.ViewModels
         //public MySubmit MySubmitInfo { get; }
         private string qRCode;
         public INavigation Navigation;
+        public ICommand SubmitCommand { get; set;  }
+        
+        public MySubmitInfoPageViewModel(INavigation navigation, MySubmitPageViewModel mySubmit)
+        {
+            Navigation = navigation;
+            SubmitCommand = new Command(submitButton);
+            MySubmit = mySubmit;
+            Kingdom = new List<string>() {
+                "Zivotinja",
+                "Insekt",
+                "Biljka"
+            };
+
+            Habitat = new List<string>() {
+                "Urbano",
+                "Ruralno",
+                "Šuma",
+                "Voda"
+            };
+        }
+
+        async void submitButton()
+        {
+            var result =await App.Current.MainPage.DisplayAlert("Spašavanje","Jeste li sigurni?", "Da", "Ne");
+            if (!result)
+                return;
+            else {
+                await Navigation.PopAsync();
+            }
+        }
+
 
         public string KingdomSelected {
             get { return MySubmit.SubmitInfo.Kingdom; }
@@ -32,7 +63,6 @@ namespace RedibaScanner.ViewModels
                 {
                     MySubmit.Kingdom = value;
                     OnPropertyChanged();
-
                 }
             }
 
@@ -51,8 +81,6 @@ namespace RedibaScanner.ViewModels
             }
 
         }
-
-
         public string Notes
         {
             get { return MySubmit.SubmitInfo.Notes; }
@@ -64,9 +92,7 @@ namespace RedibaScanner.ViewModels
                     OnPropertyChanged();
                 }
             }
-
         }
-
         public string Species
         {
             get { return MySubmit.SubmitInfo.Species; }
@@ -81,53 +107,7 @@ namespace RedibaScanner.ViewModels
             }
 
         }
-
-
-
-
-        public ICommand ScanTubeCommand
-        {
-            get; set;
-        }
-
-            public MySubmitInfoPageViewModel(INavigation navigation, MySubmitPageViewModel mySubmit)
-        {
-            Navigation = navigation;
-            ScanTubeCommand = new Command(onScanTubeButton);
-            MySubmit = mySubmit;
-            Kingdom = new List<string>() {
-                "Zivotinja",
-                "Insekt",
-                "Biljka"
-            };
-
-            Habitat = new List<string>() {
-                "Urbano",
-                "Ruralno",
-                "Šuma",
-                "Voda"
-            };
-        }
         
-        void onScanTubeButton () {
-            var scanPage = new ZXingScannerPage();
-            scanPage.OnScanResult += (result) =>
-            {
-                // Stop scanning
-                scanPage.IsScanning = false;
-
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Navigation.PopAsync();
-                    QRCode = result.Text;
-                    await App.Current.MainPage.DisplayAlert("You have connect to .....!", "Would you like to Clock In at once?", "Ok");
-                    //await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                });
-            };
-            Navigation.PushAsync(scanPage);
-
-        }
         
         public string QRCode { get { return qRCode; }
             set

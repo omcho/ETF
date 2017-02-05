@@ -8,9 +8,9 @@
     <Label Text="{Binding QRCode}"/>
     <Label Text="{Binding Kingdom}"/>
     <Button BorderRadius="0" BorderWidth="0" Text="Skeniranje tubica" Command="{Binding ScanTubeCommand}"></Button>
-    <Button BorderRadius="0" BorderWidth="0"  Text="Slika uzorka"  Clicked="Explore" ></Button>
-    <Button BorderRadius="0" BorderWidth="0" Text="Slika lokaliteta"  Clicked="MySubmit" ></Button>
+    <Button BorderRadius="0" BorderWidth="0"  Text="Slika uzorka"  Command="{Binding PictureSpeciesCommand}" ></Button>
+    <Button BorderRadius="0" BorderWidth="0" Text="Slika lokaliteta"  Command="{Binding PictureLocationCommand}" ></Button>
     <Button BorderRadius="0" BorderWidth="0"   Text="Opšte informacije"  Command="{Binding MySubmitInfoCommand}" ></Button>
-    
+    <Button BorderRadius="0" BorderWidth="0"   Text="Pošalji"  Command="{Binding MySubmitCommand}" ></Button>
   </StackLayout>
 </ContentPage>
