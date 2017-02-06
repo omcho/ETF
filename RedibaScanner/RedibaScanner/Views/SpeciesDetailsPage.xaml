@@ -6,21 +6,34 @@
              Title ="{Binding Name}"
              >
   <ContentPage.Content>
-    <ScrollView>
-      <StackLayout Padding="10">
-        <Image
-                HeightRequest="200"
-                WidthRequest="200"
-                HorizontalOptions="CenterAndExpand"
-                Aspect="AspectFill"
-                Source="{Binding Image}"/>
-        <Label Text="{Binding Name}" FontAttributes="Bold"/>
+    <StackLayout Padding="10">
+ 
+      <TableView Intent="Data" HasUnevenRows="True">
+        <TableRoot>
+          <TableSection Title="Naziv">
+            <ViewCell>
+
+              <Image
+                      HeightRequest="200"
+                      WidthRequest="200"
+                      HorizontalOptions="CenterAndExpand"
+                      Aspect="AspectFill"
+                      Source="{Binding Image}"/>
+              <Label Text="{Binding Name}" FontAttributes="Bold"/>
+
+            </ViewCell>
+            </TableSection>
+          </TableRoot>
+        </TableView>
         <Label Text="{Binding Description}" FontSize="Micro"/>
         <Label Text="AAAAA" FontAttributes="Bold"/>
 
         <Label Text="Slike" FontAttributes="Bold"/>
+        
+        
+        
+        
         <ListView ItemsSource="{Binding Images}"
-                             
                             >
           <ListView.ItemTemplate>
             <DataTemplate>
@@ -67,7 +80,8 @@
 
         <Label Text="Mapa" FontAttributes="Bold"/>
 
-      </StackLayout>
-    </ScrollView>
+      
+    
+    </StackLayout>
   </ContentPage.Content>
 </ContentPage>

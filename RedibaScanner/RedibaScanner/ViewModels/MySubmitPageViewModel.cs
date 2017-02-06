@@ -46,7 +46,6 @@ namespace RedibaScanner.ViewModels
             get; set;
         }
         
-
         public MySubmitPageViewModel(INavigation navigation)
         {
             Navigation = navigation;

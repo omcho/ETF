@@ -8,52 +8,55 @@
              >
   <ContentPage.Content>
     <StackLayout>
-      <Button Text="How many Species?" x:Name="ButtonHowMany"/>
-      <Label Margin="10,0"
-				    Text="{Binding SpeciesCount, StringFormat='{0} Species'}"/>
-      <ListView ItemsSource="{Binding SpeciesSearchInfoColl}"
-                HasUnevenRows="true"
-                GroupShortNameBinding = "{Binding Key}"
-                    IsGroupingEnabled = "false"
-                            GroupDisplayBinding = "{Binding Key}"
-                      ItemTapped="Handle_ItemTapped"
-					        ItemSelected="Handle_ItemSelected"
-                            >
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Image
-    HeightRequest="66"
-    HorizontalOptions="CenterAndExpand"
-    VerticalOptions="CenterAndExpand"
-    Aspect="AspectFill"
-                       WidthRequest="66"
-                       Grid.RowSpan="2"
-                       Source="{Binding Image}"/>
-                <Label Grid.Column="1"
-                       Text="{Binding Name}"
-     VerticalOptions="End"/>
-                <Label Grid.Column="1"
-                       Grid.Row="1"
-                       VerticalOptions="Start"
-                       Text="{Binding Description}"/>
-              </Grid>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
       
-     </StackLayout>
+              <Label Text ="{Binding Test}"/>
+              <SearchBar SearchCommand="{Binding SearchCommandC}" x:Name="SearchBarSpecies" Text ="{Binding SearchBarText}"/>
+
+    <ScrollView Orientation="Vertical">
+              <ListView ItemsSource="{Binding SpeciesSearchInfoColl}"
+                        HasUnevenRows="true"
+                        GroupShortNameBinding = "{Binding Key}"
+                            IsGroupingEnabled = "false"
+                                    GroupDisplayBinding = "{Binding Key}"
+                              ItemTapped="Handle_ItemTapped"
+                          ItemSelected="Handle_ItemSelected"
+                            >
+                <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <ViewCell>
+                      <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="Auto"/>
+                          <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="Auto"/>
+                          <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+            HeightRequest="66"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Aspect="AspectFill"
+                               WidthRequest="66"
+                               Grid.RowSpan="2"
+                               Source="{Binding Image}"/>
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+             VerticalOptions="End"/>
+                        <Label Grid.Column="1"
+                               Grid.Row="1"
+                               VerticalOptions="Start"
+                               Text="{Binding Description}"/>
+                      </Grid>
+                    </ViewCell>
+                  </DataTemplate>
+                </ListView.ItemTemplate>
+              </ListView>
+    </ScrollView>
+
+    </StackLayout>
   </ContentPage.Content>
 
 </ContentPage>
