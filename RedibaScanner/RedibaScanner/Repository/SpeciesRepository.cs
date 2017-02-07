@@ -27,16 +27,21 @@ namespace RedibaScanner.Repository
             SpeciesSearchInfoColl = new ObservableCollection<SpeciesSearchInfo>();
             SpeciesSearchInfoColl.Add(new SpeciesSearchInfo
             {
-                Name = "Baboon",
-                Description = "Baboons are African and Arabian Old World monkeys belonging to the genus Papio, part of the subfamily Cercopithecinae.",
+                Name = "Baboon Baboonos",
+                Location = "Jigokudani, u prijevodu “Dolina Pakla”, se nalazi u Yamanouchiu, Shimotakai Distrikt, u Japanu, a područje je poznato po svojoj surovoj klimi, surovom krajoliku, termalnim izvorima – i majmunima. Park je najpoznatiji po svojoj populaciji japanskih makaki majmuna.",
+                Hierarchy = "Arthropoda, Malacostraca, Isopoda, Philosciidae, Philoscia, Philoscia muscorum",
+                RecordsAvailableText = "Dostupno bilješki: 87514",
+                PercentPublicText = "Javno: 34%",
+                SpeciesCollectedText = "Sakupljeno vrsta: 301",
+                Description = "Majmun je pojam čije se tomačenje na mnogim svjetskim jezicima bitno razlikuje od onog na Engleskom. Za sve repate majmune, Englezi imaju naziv monkey, koji se kod nas prevodi kao majmun, a diferenciraju naziv bezrepih, velikih majmuna (giboni, orangutani, gorile i čimpanze) imenicom ape. Kod nas je ovo odrednica odnosi na sve životinjske vrste iz sisarskog reda primata.Prema klasičnoj sistematizaciji, red primata se dijeli na dva podreda: u prvu grupu se ubrajaju svi polumajmuni (Prosimii), a u drugu repati majmuni i veliki majmuni, uključujući i čovjekolike majmune i ljude (Anthropoidea). Ovdje termin „majmun“ obuhvata Novog svijeta i majmune Starog svijeta (repate, tj psetolike i čovjekolike majmune, odnosno i širokonosne i uskonosne), uključujući i čovjeka i njegove neposredne pretke",
                 Image = "http://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg",
                 Images = new List<CustomImage>() { new CustomImage() {
 
-                            Url="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg", ShortDesc="Joj"
+                            Url="http://www.mojportal.ba/slike/novosti/AAA%20ZANIMLJIVOSTI%202012/covjekoliki-majmun.jpg", ShortDesc="Joj"
                          },
                             new CustomImage() {
 
-                            Url="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg", ShortDesc="Joj2"
+                            Url="http://www.simboli.rs/wp-content/uploads/majmun-simbolika-300px.jpg", ShortDesc="Joj2"
                             }
                     }
             });

@@ -2,38 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedibaScanner.Views.SpeciesDetailsPage"
-             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              Title ="{Binding Name}"
              >
   <ContentPage.Content>
     <StackLayout Padding="10">
- 
       <TableView Intent="Data" HasUnevenRows="True">
         <TableRoot>
           <TableSection Title="Naziv">
-            <ViewCell>
-
-              <Image
-                      HeightRequest="200"
-                      WidthRequest="200"
-                      HorizontalOptions="CenterAndExpand"
-                      Aspect="AspectFill"
-                      Source="{Binding Image}"/>
-              <Label Text="{Binding Name}" FontAttributes="Bold"/>
-
+            <ImageCell ImageSource="{Binding Image}" Text="{Binding Name}"> 
+           </ImageCell>
+            </TableSection>
+          <TableSection Title="Hijerarhijska taksonomija">
+             <ViewCell>
+              <Label Text="{Binding Hierarchy}"/>
             </ViewCell>
             </TableSection>
-          </TableRoot>
-        </TableView>
-        <Label Text="{Binding Description}" FontSize="Micro"/>
-        <Label Text="AAAAA" FontAttributes="Bold"/>
-
-        <Label Text="Slike" FontAttributes="Bold"/>
-        
-        
-        
-        
-        <ListView ItemsSource="{Binding Images}"
+          <TableSection Title="Opis">
+            <ViewCell>
+              <Label Text="{Binding Description}"/>
+            </ViewCell>
+            </TableSection>
+        <TableSection Title="Slike">
+            <ViewCell>
+              <controls:CarouselView x:Name ="AdditionalImagess" HeightRequest="150" ItemsSource="{Binding Images}">
+                    <controls:CarouselView.ItemTemplate>                   
+                                <DataTemplate>
+                                  <StackLayout>
+                                    <Image HeightRequest="150" Source="{Binding Url}" >
+                                     <!-- <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding PictureTapCommand}"
+                                            CommandParameter="{Binding .}" />
+                                      </Image.GestureRecognizers>-->
+                                    </Image>
+                                    </StackLayout>
+                                </DataTemplate>
+                    </controls:CarouselView.ItemTemplate>
+                    </controls:CarouselView>
+        <!--<ListView ItemsSource="{Binding Images}"
                             >
           <ListView.ItemTemplate>
             <DataTemplate>
@@ -67,7 +74,30 @@
               </ViewCell>
             </DataTemplate>
           </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
+              </ViewCell>
+          </TableSection>
+        <TableSection Title="Lokacija">
+          <ViewCell>
+            <Label 
+                         Text="{Binding Location}"/>
+          </ViewCell>
+            <ViewCell> 
+              <Image Source="http://www.drodd.com/images13/world-map12.jpg" /> 
+           </ViewCell>
+          </TableSection>
+        
+       <TableSection Title="Dodatni info">
+          <ViewCell>
+            <StackLayout Orientation="Vertical">
+            <Label Text="{Binding RecordsAvailableText}"/>
+          <Label  Text="{Binding PercentPublicText}"/>
+          <Label  Text="{Binding SpeciesCollectedText}"/>
+              </StackLayout>
+          </ViewCell>
+          </TableSection>
+          </TableRoot>
+          </TableView>
         
         <!--<forms:CarouselView ItemsSource="{Binding SpeciesSearchInfoColl}" x:Name="CarouselZoos">
           <forms:CarouselView.ItemTemplate>
@@ -77,11 +107,6 @@
           </forms:CarouselView.ItemTemplate>
         </forms:CarouselView>-->
 
-
-        <Label Text="Mapa" FontAttributes="Bold"/>
-
-      
-    
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

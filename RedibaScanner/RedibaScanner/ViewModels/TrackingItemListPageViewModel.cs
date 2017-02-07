@@ -15,8 +15,8 @@ namespace RedibaScanner.ViewModels
         {
             //dobavljanje podataka
             list = new List<TrackingItem>();
-            list.Add(new TrackingItem() { QRCodeID = "Asdd 33", Note="Mislim da je slon"});
-            list.Add(new TrackingItem() { QRCodeID = "Asdd 22233", Note = "Mislim da je tigar" });
+            list.Add(new TrackingItem() { QRCodeID = "AEF-456", Note="Mislim da je slon"});
+            list.Add(new TrackingItem() { QRCodeID = "AEF-123", Note = "Mislim da je tigar" });
 
 
         }

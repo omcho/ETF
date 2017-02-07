@@ -17,6 +17,7 @@ namespace RedibaScanner.Models
         public string Habitat { get; set; }
         public string Kingdom { get; set; }
         public string QRCodeID { get; set; }
+        public string DNKSequence { get; set; }
 
         public string BarCode { get; set; }
         public List<CustomImage> Images { get; set; }
@@ -34,6 +35,7 @@ namespace RedibaScanner.Models
         public string PercentPublicText { get; set; }
         public int SpeciesCollected { get; set; }
         public string SpeciesCollectedText { get; set; }
+        public SpeciesSearchInfo SpeciesSearchInfo { get; set; }
 
     }
 }

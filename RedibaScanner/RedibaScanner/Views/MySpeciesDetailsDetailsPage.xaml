@@ -3,66 +3,101 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedibaScanner.Views.MySpeciesDetailsPage"
              xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-             Title ="{Binding species.FullName}">
+             Title ="{Binding Species.FullName}">
   
   <ContentPage.Content>
-
     <StackLayout>
+      <Label Text="Podaci o poslanom uzorku" FontSize="Large"/>
+      <TableView Intent="Data" HasUnevenRows="True">
+        
+        <TableRoot>
+          <TableSection Title="Naziv">
+            <ImageCell ImageSource="{Binding Species.SpeciesSearchInfo.Image}" Text="{Binding Species.FullName}" >
+            </ImageCell>
+          </TableSection>
+          <TableSection Title="DNK Sekvenca">
+            <ViewCell>
+              <ScrollView Orientation="Horizontal">
+                <StackLayout Padding ="20">
+              <Label Text="{Binding Species.DNKSequence}" FontSize="Large"/>
+                </StackLayout>
+              </ScrollView>
+            </ViewCell>
+          </TableSection>
+         
+      <TableSection Title="Detalji">
+            ¸<ViewCell>
+              <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-      <Label Text="{Binding species.FullName}"/>
-                               
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Text="Bar (QR) kod:"
+     VerticalOptions="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="0"
+                       Text="{Binding Species.BarCode}"
+     VerticalOptions="End"/>
+                 <Label Grid.Column="0"
+                       Grid.Row="1"
+                       Text="Lokacija:"
+     VerticalOptions="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Slika"
+     VerticalOptions="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       Text="Dodatne slike:"
+     VerticalOptions="End"/>
+                <Label Grid.Column="2"
+                       Grid.Row="2"
+                       Text="Nema"
+     VerticalOptions="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       Text="Stanište:"
+     VerticalOptions="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="3"
+                       Text="{Binding Species.Habitat}"
+     VerticalOptions="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="4"
+                       Text="Carstvo:"
+     VerticalOptions="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="4"
+                       Text="{Binding Species.Kingdom}"
+     VerticalOptions="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="5"
+                       Text="Vrsta:"
+     VerticalOptions="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="5"
+                       Text="{Binding Species.Species}"
+     VerticalOptions="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="6"
+                       Text="Bilješke"
+     VerticalOptions="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="6"
+                       Text="{Binding Species.Notes}"
+     VerticalOptions="End"/>
+              </Grid>
+            </ViewCell>
+          </TableSection>
       
-              
-                  <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
-                    <Frame.Content>
-                      <ScrollView Orientation="Horizontal">
-                      <StackLayout Padding="20,0,0,0">
-                        <Label Text="Barkod (DNK)"
-                               FontFamily="OpenSans-Light"
-                               FontSize="10"
-                               />
-                        <Label Text="{Binding species.BarCode}"
-                               FontFamily="OpenSans-Light"
-                               FontSize="13"
-                               />
-                      </StackLayout>
-                      </ScrollView>
-                    </Frame.Content>
-              </Frame>
-
-      <Label Text="Podaci o uzorku"/>
-          <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
-            <Frame.Content>
-              <StackLayout Padding="20,0,0,0">
-                <Label Text="Barkod (DNK)"
-                       FontFamily="OpenSans-Light"
-                       FontSize="10"
-                               />
-                <Label Text="{Binding species.Notes}"
-                       FontFamily="OpenSans-Light"
-                       FontSize="13"
-                               />
-                <Label Text="Barkod (DNK)"
-                       FontFamily="OpenSans-Light"
-                       FontSize="10"
-                               />
-                <Label Text="{Binding species.Notes}"
-                       FontFamily="OpenSans-Light"
-                       FontSize="13"
-                               />
-                <Label Text="Barkod (DNK)"
-                       FontFamily="OpenSans-Light"
-                       FontSize="10"
-                               />
-                <Label Text="{Binding species.Notes}"
-                       FontFamily="OpenSans-Light"
-                       FontSize="13"
-                               />
-              </StackLayout>
-            </Frame.Content>
-      </Frame>
-      
-               <controls:CarouselView x:Name ="AdditionalImagess" ItemsSource="{Binding species.AdditionalImages}">
+              <!-- <controls:CarouselView x:Name ="AdditionalImagess" ItemsSource="{Binding Species.AdditionalImages}">
                     <controls:CarouselView.ItemTemplate>                   
                                 <DataTemplate>
                                   <StackLayout>
@@ -76,8 +111,93 @@
                                     </StackLayout>
                                 </DataTemplate>
                     </controls:CarouselView.ItemTemplate>
-                    </controls:CarouselView>
-              
+                    </controls:CarouselView>-->
+      
+          <TableSection Title="Hijerarhijska taksonomija">
+            <ViewCell>
+              <Label Text="{Binding Species.SpeciesSearchInfo.Hierarchy}"/>
+            </ViewCell>
+          </TableSection>
+          <TableSection Title="Opis">
+            <ViewCell>
+              <Label Text="{Binding Species.SpeciesSearchInfo.Description}"/>
+            </ViewCell>
+          </TableSection>
+          <TableSection Title="Slike">
+            <ViewCell>
+              <controls:CarouselView x:Name ="AdditionalImages2" HeightRequest="150" ItemsSource="{Binding Species.SpeciesSearchInfo.Images}">
+                <controls:CarouselView.ItemTemplate>
+                  <DataTemplate>
+                    <StackLayout>
+                      <Image HeightRequest="150" Source="{Binding Url}" >
+                        <!-- <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding PictureTapCommand}"
+                                            CommandParameter="{Binding .}" />
+                                      </Image.GestureRecognizers>-->
+                      </Image>
+                    </StackLayout>
+                  </DataTemplate>
+                </controls:CarouselView.ItemTemplate>
+              </controls:CarouselView>
+              <!--<ListView ItemsSource="{Binding Images}"
+                            >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+
+                  <Image
+      HeightRequest="66"
+      HorizontalOptions="CenterAndExpand"
+      VerticalOptions="CenterAndExpand"
+      Aspect="AspectFill"
+                         WidthRequest="66"
+                         Grid.RowSpan="2"
+                         Source="{Binding Url}"/>
+                  <Label Grid.Column="1"
+                         Text="{Binding ShortDesc}"
+       VerticalOptions="End"/>
+                  <Label Grid.Column="1"
+                         Grid.Row="1"
+                         VerticalOptions="Start"
+                         Text="{Binding ShortDesc}"/>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>-->
+            </ViewCell>
+          </TableSection>
+          <TableSection Title="Lokacija">
+            <ViewCell>
+              <Label
+                           Text="{Binding Species.SpeciesSearchInfo.Location}"/>
+            </ViewCell>
+            <ViewCell>
+              <Image Source="http://www.drodd.com/images13/world-map12.jpg" />
+            </ViewCell>
+          </TableSection>
+
+          <TableSection Title="Dodatni info">
+            <ViewCell>
+              <StackLayout Orientation="Vertical">
+                <Label Text="{Binding Species.SpeciesSearchInfo.RecordsAvailableText}"/>
+                <Label  Text="{Binding Species.SpeciesSearchInfo.PercentPublicText}"/>
+                <Label  Text="{Binding Species.SpeciesSearchInfo.SpeciesCollectedText}"/>
+              </StackLayout>
+            </ViewCell>
+          </TableSection>
+        </TableRoot>
+      </TableView>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
