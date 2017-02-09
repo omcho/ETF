@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Helpers\DoubleExtensions.cs" />
+    <Compile Include="Helpers\PinchToZoomContainer.cs" />
     <Compile Include="Models\CustomImage.cs" />
     <Compile Include="Models\MySpeciesDetails.cs" />
     <Compile Include="Models\MySpecies.cs" />
