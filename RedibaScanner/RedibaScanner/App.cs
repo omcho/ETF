@@ -14,9 +14,9 @@ namespace RedibaScanner
         static SpeciesSearchInfoViewModel speciesSearchInfoVM;
         public static SpeciesSearchInfoViewModel SpeciesSearchInfoViewModel => speciesSearchInfoVM ?? (speciesSearchInfoVM = new SpeciesSearchInfoViewModel());
 
-        static SpeciesDetailsViewModel speciesDetailsVM;
+       /* static SpeciesDetailsViewModel speciesDetailsVM;
         public static SpeciesDetailsViewModel SpeciesDetailsViewModel
-        => speciesDetailsVM ?? (speciesDetailsVM = new SpeciesDetailsViewModel(SpeciesRepository.SpeciesSearchInfoColl[0]));
+        => speciesDetailsVM ?? (speciesDetailsVM = new SpeciesDetailsViewModel(SpeciesRepository.SpeciesSearchInfoColl[0]));*/
     }
     public class App : Application
     {

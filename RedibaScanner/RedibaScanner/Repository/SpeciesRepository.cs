@@ -28,6 +28,11 @@ namespace RedibaScanner.Repository
             SpeciesSearchInfoColl.Add(new SpeciesSearchInfo
             {
                 Name = "Baboon Baboonos",
+                LocationImage = new CustomImage()
+                {
+                    Url = "http://www.drodd.com/images13/world-map12.jpg",
+                    ShortDesc = "Lokacija"
+                },
                 Location = "Jigokudani, u prijevodu “Dolina Pakla”, se nalazi u Yamanouchiu, Shimotakai Distrikt, u Japanu, a područje je poznato po svojoj surovoj klimi, surovom krajoliku, termalnim izvorima – i majmunima. Park je najpoznatiji po svojoj populaciji japanskih makaki majmuna.",
                 Hierarchy = "Arthropoda, Malacostraca, Isopoda, Philosciidae, Philoscia, Philoscia muscorum",
                 RecordsAvailableText = "Dostupno bilješki: 87514",

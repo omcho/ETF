@@ -48,8 +48,10 @@ namespace RedibaScanner.Views
 
 
             */
+            
             var speciesDetailsPage = new SpeciesDetailsPage();
-            speciesDetailsPage.BindingContext = speciesDetails;
+            SpeciesDetailsViewModel vm = new SpeciesDetailsViewModel(speciesDetails, Navigation);
+            speciesDetailsPage.BindingContext = vm;
             await Navigation.PushAsync(speciesDetailsPage);
         }
     }

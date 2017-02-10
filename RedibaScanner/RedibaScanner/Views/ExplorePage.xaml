@@ -4,9 +4,4 @@
              x:Class="RedibaScanner.Views.ExplorePage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              Title="Istraži">
-  <maps:Map x:Name="LocationMap"
-            MapType="Hybrid"
-            
-            
-            />
 </ContentPage>

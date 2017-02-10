@@ -13,6 +13,7 @@ using ZXing.Net.Mobile.Forms;
 using System.Runtime.CompilerServices;
 using RedibaScanner.Views;
 using Plugin.Media;
+using RedibaScanner.Helpers;
 
 namespace RedibaScanner.ViewModels
 {
@@ -21,6 +22,71 @@ namespace RedibaScanner.ViewModels
         public MySubmit SubmitInfo { get; set; }
         private string qRCode;
         public INavigation Navigation { get; set; }
+        private Boolean activityIsRunning;
+        private Color pictureSpeciesTaken;
+        private Color pictureLocationTaken;
+        private Color tubeScanned;
+        private Color submitInfoTaken;
+
+        public Color PictureLocationTaken
+        {
+            get
+            {
+                return pictureLocationTaken;
+            }
+            set
+            {
+                pictureLocationTaken = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Color TubeScanned
+        {
+            get
+            {
+                return tubeScanned;
+            }
+            set
+            {
+                tubeScanned = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Color SubmitInfoTaken
+        {
+            get
+            {
+                return submitInfoTaken;
+            }
+            set
+            {
+                submitInfoTaken = value;
+                OnPropertyChanged();
+            }
+        }
+        public Color PictureSpeciesTaken
+        {
+            get
+            {
+                return pictureSpeciesTaken;
+            }
+            set
+            {
+                pictureSpeciesTaken = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Boolean ActivityIsRunning {
+            get {
+                return activityIsRunning;}
+            set {
+                    activityIsRunning = value;
+                    OnPropertyChanged();
+            }
+            }
 
         public ICommand ScanTubeCommand
         {
@@ -73,29 +139,67 @@ namespace RedibaScanner.ViewModels
                     //await DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
             };
+            TubeScanned = Color.LightGreen;
             Navigation.PushAsync(scanPage);
 
         }
         async void PictureSpecies()
         {
+            
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 await App.Current.MainPage.DisplayAlert("Nema kamere", "Kamera nedostupna!", "OK");
                 return;
             }
+            ActivityIsRunning = true;
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 Directory = "RedibaScannerPictures",
                 Name = System.DateTime.Now.ToString() + ".jpg",
                 SaveToAlbum = true
             });
+            ActivityIsRunning = false;
             if (file == null)
                 return;
             else
             {
+
                 SubmitInfo.SpeciesImage.ImageLocation = file.Path;
+                ContentPage imagePage = new ContentPage();
+                imagePage.ToolbarItems.Add(new ToolbarItem("Spasi", "info-icon.png", () =>
+                {
+                    App.Current.MainPage.DisplayAlert("Uspjeh", "Uspješno odabrana slika vrste!", "OK");
+                    PictureSpeciesTaken = Color.LightGreen;
+                    Navigation.PopAsync();
+                }));
+                imagePage.ToolbarItems.Add(new ToolbarItem("Ponovo slikaj", "info-icon.png", () =>
+                {
+                    PictureSpecies();
+                    Navigation.PopAsync();
+                }));
+                var myImage = new Xamarin.Forms.Image()
+                {
+                    Source = ImageSource.FromStream(() =>
+                    {
+                        var stream = file.GetStream();
+                        file.Dispose();
+                        return stream;
+                    })
+            };
+
+                RelativeLayout layout = new RelativeLayout();
+                
+                layout.Children.Add(new PinchToZoomContainer() { Content = myImage },
+                    Constraint.Constant(0),
+                    Constraint.Constant(0),
+                    Constraint.RelativeToParent((parent) => { return parent.Width; }),
+                    Constraint.RelativeToParent((parent) => { return parent.Height; }));
+                imagePage.Content = layout;
+                imagePage.Title = "Slika";
+                
+                await Navigation.PushAsync(imagePage);
             }
-            await App.Current.MainPage.DisplayAlert("Uspjeh", "Uspješno odabrana slika vrste!", "OK");
+            
         }
         
         async void PictureLocation()
@@ -105,19 +209,50 @@ namespace RedibaScanner.ViewModels
                 await App.Current.MainPage.DisplayAlert("Nema kamere", "Kamera nedostupna!", "OK");
                 return;
             }
+            ActivityIsRunning = true;
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 Directory = "RedibaScannerPictures",
                 Name = System.DateTime.Now.ToString() + ".jpg",
                 SaveToAlbum = true
             });
+            ActivityIsRunning = false;
             if (file == null)
                 return;
             else {
                 SubmitInfo.LocationImage.ImageLocation = file.Path;
-            }
-            await App.Current.MainPage.DisplayAlert("Uspjeh", "Uspješno odabrana slika lokacije!", "OK");
+                ContentPage imagePage = new ContentPage();
+                imagePage.ToolbarItems.Add(new ToolbarItem("Spasi", "info-icon.png", () =>
+                {
+                    App.Current.MainPage.DisplayAlert("Uspjeh", "Uspješno odabrana slika lokacije!", "OK");
+                    PictureLocationTaken = Color.LightGreen;
+                    Navigation.PopAsync();
+                }));
+                imagePage.ToolbarItems.Add(new ToolbarItem("Ponovo slikaj", "info-icon.png", () =>
+                {
+                    PictureLocation();
+                    Navigation.PopAsync();
+                }));
+                var myImage = new Xamarin.Forms.Image()
+                {
+                    Source = ImageSource.FromStream(() =>
+                    {
+                        var stream = file.GetStream();
+                        file.Dispose();
+                        return stream;
+                    })
+                };
+                RelativeLayout layout = new RelativeLayout();
+                layout.Children.Add(new PinchToZoomContainer() { Content = myImage },
+                    Constraint.Constant(0),
+                    Constraint.Constant(0),
+                    Constraint.RelativeToParent((parent) => { return parent.Width; }),
+                    Constraint.RelativeToParent((parent) => { return parent.Height; }));
+                imagePage.Content = layout;
+                //imagePage.Title = "Slika";
 
+                await Navigation.PushAsync(imagePage);
+            }
         }
         async void MySubmit()
         {

@@ -6,13 +6,15 @@
              Title ="Opšte Informacije">
   
   <ContentPage.Content>
-    <ScrollView>
     <StackLayout>
+      <!--
       <Label Text="{Binding MySubmit.QRCode}"/>
-      <Label Text="{Binding MySubmit.Kingdom}"/>
-      <Label Text="Kraljevstvo/Vrsta"/>
-
-        <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0">
+      <Label Text="{Binding MySubmit.Kingdom}"/>-->
+      <TableView Intent="Form" HasUnevenRows="True">
+        <TableRoot>
+        <TableSection Title="Kraljevstvo/Vrsta">
+          <ViewCell>
+        <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
                  <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
                       <ListView x:Name="KingdomListView" SelectedItem="{Binding KingdomSelected, Mode=TwoWay}" ItemsSource="{Binding Kingdom}"
@@ -29,10 +31,12 @@
                     </Frame.Content>
               </Frame>
           </StackLayout>
-      
-    
-    <Label Text="Stanovište"/>
-                             <StackLayout VerticalOptions = "FillAndExpand">  
+          </ViewCell>
+          </TableSection>
+
+          <TableSection Title="Stanovište">
+            <ViewCell>
+                             <StackLayout VerticalOptions = "FillAndExpand" Orientation="Vertical">  
                  <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
                       <ListView x:Name="HabitatListView" SelectedItem="{Binding HabitatSelected, Mode=TwoWay}"
@@ -50,9 +54,11 @@
                     </Frame.Content>
               </Frame>
                                </StackLayout>
-      
-      
-    <Label Text="Vrsta"/>
+            </ViewCell>
+          </TableSection>
+
+          <TableSection Title="Vrsta">
+            <ViewCell>
                              <StackLayout VerticalOptions = "FillAndExpand">  
                  <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
@@ -60,8 +66,10 @@
                     </Frame.Content>
               </Frame>
                                </StackLayout>
-      
-       <Label Text="Bilješke"/>
+            </ViewCell>
+          </TableSection>
+          <TableSection Title="Bilješke">
+            <ViewCell>
                              <StackLayout VerticalOptions = "FillAndExpand">  
                  <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
@@ -69,10 +77,11 @@
                     </Frame.Content>
               </Frame>
                                </StackLayout>
-
-
+            </ViewCell>
+          </TableSection>
+          </TableRoot>
+      </TableView>
   <Button BorderRadius="0" BorderWidth="0"   Text="Spasi"  Command="{Binding SubmitCommand}" ></Button>
     </StackLayout>
-      </ScrollView>
   </ContentPage.Content>
 </ContentPage>

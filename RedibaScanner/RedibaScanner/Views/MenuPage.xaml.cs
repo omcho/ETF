@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RedibaScanner.Views;
 using Xamarin.Forms;
 using RedibaScanner.ViewModels;
+using Plugin.Geolocator;
 
 namespace RedibaScanner
 {
@@ -18,6 +19,8 @@ namespace RedibaScanner
 
         void Explore(object sender, System.EventArgs e)
         {
+
+            
             Navigation.PushAsync(new ExplorePage());
             //DisplayAlert("Naslov", "Joj","Idemooo");
         }

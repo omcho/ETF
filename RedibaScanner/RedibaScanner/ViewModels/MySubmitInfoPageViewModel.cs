@@ -50,6 +50,7 @@ namespace RedibaScanner.ViewModels
             if (!result)
                 return;
             else {
+                MySubmit.SubmitInfoTaken = Color.LightGreen;
                 await Navigation.PopAsync();
             }
         }

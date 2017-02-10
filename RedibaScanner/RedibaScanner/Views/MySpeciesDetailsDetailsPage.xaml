@@ -18,16 +18,25 @@
           </TableSection>
           <TableSection Title="DNK Sekvenca">
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <ScrollView Orientation="Horizontal">
                 <StackLayout Padding ="20">
               <Label Text="{Binding Species.DNKSequence}" FontSize="Large"/>
                 </StackLayout>
               </ScrollView>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
             </ViewCell>
           </TableSection>
          
       <TableSection Title="Detalji">
             ¸<ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
                 <Grid.RowDefinitions>
                   <RowDefinition Height="Auto"/>
@@ -117,6 +126,9 @@
                        Text="{Binding Species.Notes}"
      VerticalOptions="End"/>
               </Grid>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
             </ViewCell>
           </TableSection>
       
@@ -138,16 +150,31 @@
       
           <TableSection Title="Hijerarhijska taksonomija">
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <Label Text="{Binding Species.SpeciesSearchInfo.Hierarchy}"/>
+            </Frame.Content>
+        </Frame>
+      </StackLayout>
             </ViewCell>
           </TableSection>
           <TableSection Title="Opis">
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <Label Text="{Binding Species.SpeciesSearchInfo.Description}"/>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
             </ViewCell>
           </TableSection>
           <TableSection Title="Slike">
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <controls:CarouselView x:Name ="AdditionalImages2" HeightRequest="150" ItemsSource="{Binding Species.SpeciesSearchInfo.Images}">
                 <controls:CarouselView.ItemTemplate>
                   <DataTemplate>
@@ -163,6 +190,9 @@
                   </DataTemplate>
                 </controls:CarouselView.ItemTemplate>
               </controls:CarouselView>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
               <!--<ListView ItemsSource="{Binding Images}"
                             >
           <ListView.ItemTemplate>
@@ -202,10 +232,19 @@
           </TableSection>
           <TableSection Title="Lokacija">
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <Label
                            Text="{Binding Species.SpeciesSearchInfo.Location}"/>
+            </Frame.Content>
+        </Frame>
+      </StackLayout>
             </ViewCell>
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <Image Source="{Binding Species.SpeciesSearchInfo.LocationImage.Url}" >
                 <Image.GestureRecognizers>
                   <TapGestureRecognizer
@@ -213,15 +252,25 @@
                                              />
                 </Image.GestureRecognizers>
               </Image>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
             </ViewCell>
+                
           </TableSection>
 
           <TableSection Title="Dodatni info">
             <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
               <StackLayout Orientation="Vertical">
                 <Label Text="{Binding Species.SpeciesSearchInfo.RecordsAvailableText}"/>
                 <Label  Text="{Binding Species.SpeciesSearchInfo.PercentPublicText}"/>
                 <Label  Text="{Binding Species.SpeciesSearchInfo.SpeciesCollectedText}"/>
+              </StackLayout>
+                  </Frame.Content>
+                </Frame>
               </StackLayout>
             </ViewCell>
           </TableSection>

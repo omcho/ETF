@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedibaScanner.Views.SpeciesDetailsPage"
+             x:Name ="SpeciesDetailsPage"
              xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              Title ="{Binding Name}"
              >
@@ -10,103 +11,102 @@
       <TableView Intent="Data" HasUnevenRows="True">
         <TableRoot>
           <TableSection Title="Naziv">
-            <ImageCell ImageSource="{Binding Image}" Text="{Binding Name}"> 
+            <ImageCell ImageSource="{Binding SpeciesInfo.Image}" Text="{Binding SpeciesInfo.Name}"> 
            </ImageCell>
             </TableSection>
           <TableSection Title="Hijerarhijska taksonomija">
              <ViewCell>
-              <Label Text="{Binding Hierarchy}"/>
+               <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                 <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                   <Frame.Content>
+              <Label Text="{Binding SpeciesInfo.Hierarchy}"/>
+                   </Frame.Content>
+                 </Frame>
+               </StackLayout>
             </ViewCell>
             </TableSection>
           <TableSection Title="Opis">
             <ViewCell>
-              <Label Text="{Binding Description}"/>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
+              <Label Text="{Binding SpeciesInfo.Description}"/>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
             </ViewCell>
             </TableSection>
-        <TableSection Title="Slike">
+      <TableSection Title="Slike">
             <ViewCell>
-              <controls:CarouselView x:Name ="AdditionalImagess" HeightRequest="150" ItemsSource="{Binding Images}">
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
+              <controls:CarouselView x:Name ="AdditionalImagesSpec2" HeightRequest="150" ItemsSource="{Binding SpeciesInfo.Images}">
                     <controls:CarouselView.ItemTemplate>                   
                                 <DataTemplate>
                                   <StackLayout>
                                     <Image HeightRequest="150" Source="{Binding Url}" >
-                                     <!-- <Image.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding PictureTapCommand}"
-                                            CommandParameter="{Binding .}" />
-                                      </Image.GestureRecognizers>-->
+                                      <Image.GestureRecognizers>
+                                      <TapGestureRecognizer
+                                          Command="{Binding Path=BindingContext.PictureTapCommand, Source={x:Reference SpeciesDetailsPage}}"
+                                             />
+                                      </Image.GestureRecognizers>
                                     </Image>
                                     </StackLayout>
                                 </DataTemplate>
                     </controls:CarouselView.ItemTemplate>
                     </controls:CarouselView>
-        <!--<ListView ItemsSource="{Binding Images}"
-                            >
-          <ListView.ItemTemplate>
-            <DataTemplate>
-              <ViewCell>
-                <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                  </Grid.RowDefinitions>
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-
-                  <Image
-      HeightRequest="66"
-      HorizontalOptions="CenterAndExpand"
-      VerticalOptions="CenterAndExpand"
-      Aspect="AspectFill"
-                         WidthRequest="66"
-                         Grid.RowSpan="2"
-                         Source="{Binding Url}"/>
-                  <Label Grid.Column="1"
-                         Text="{Binding ShortDesc}"
-       VerticalOptions="End"/>
-                  <Label Grid.Column="1"
-                         Grid.Row="1"
-                         VerticalOptions="Start"
-                         Text="{Binding ShortDesc}"/>
-                </Grid>
-              </ViewCell>
-            </DataTemplate>
-          </ListView.ItemTemplate>
-        </ListView>-->
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
               </ViewCell>
           </TableSection>
-        <TableSection Title="Lokacija">
+         <TableSection Title="Lokacija">
           <ViewCell>
+            <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+              <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                <Frame.Content>
+            
             <Label 
-                         Text="{Binding Location}"/>
+                         Text="{Binding SpeciesInfo.Location}"/>
+                </Frame.Content>
+              </Frame>
+            </StackLayout>
           </ViewCell>
-            <ViewCell> 
-              <Image Source="http://www.drodd.com/images13/world-map12.jpg" /> 
+           <ViewCell>
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                  <Frame.Content>
+                    <Image Source="{Binding SpeciesInfo.LocationImage.Url}" >
+                      <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                        Command="{Binding Path=BindingContext.PictureLocationTapCommand, Source={x:Reference SpeciesDetailsPage}}"
+                                             />
+                      </Image.GestureRecognizers>
+                    </Image>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
            </ViewCell>
           </TableSection>
-        
        <TableSection Title="Dodatni info">
           <ViewCell>
-            <StackLayout Orientation="Vertical">
-            <Label Text="{Binding RecordsAvailableText}"/>
-          <Label  Text="{Binding PercentPublicText}"/>
-          <Label  Text="{Binding SpeciesCollectedText}"/>
-              </StackLayout>
+            <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+              <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
+                <Frame.Content>
+                  <StackLayout Orientation="Vertical">
+            <Label Text="{Binding SpeciesInfo.RecordsAvailableText}"/>
+          <Label  Text="{Binding SpeciesInfo.PercentPublicText}"/>
+          <Label  Text="{Binding SpeciesInfo.SpeciesCollectedText}"/>
+                  </StackLayout>
+            </Frame.Content>
+            </Frame>
+          </StackLayout>
           </ViewCell>
-          </TableSection>
+          </TableSection>-->
           </TableRoot>
           </TableView>
         
-        <!--<forms:CarouselView ItemsSource="{Binding SpeciesSearchInfoColl}" x:Name="CarouselZoos">
-          <forms:CarouselView.ItemTemplate>
-            <DataTemplate>
-              <Image Source="{Binding Image}" />
-            </DataTemplate>
-          </forms:CarouselView.ItemTemplate>
-        </forms:CarouselView>-->
-
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
