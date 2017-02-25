@@ -113,7 +113,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RedibaScanner\RedibaScanner\RedibaScanner.csproj">
+    <ProjectReference Include="..\..\RedibaScanner\RedibaScanner.csproj">
       <Project>{60d00898-e5dd-4be8-950b-6fd979eb1ef2}</Project>
       <Name>RedibaScanner</Name>
     </ProjectReference>
