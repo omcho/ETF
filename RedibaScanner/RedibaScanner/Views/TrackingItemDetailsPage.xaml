@@ -18,8 +18,14 @@
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
-
-              <Frame Padding="0,0,0,3">
+              <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
+                <Frame Margin ="5" Padding="20"  BackgroundColor="White">
+                  <Frame.Content>
+                    <Label Text="{Binding Description}"/>
+                  </Frame.Content>
+                </Frame>
+              </StackLayout>
+              <!--<Frame Padding="0,0,0,3">
                 <Frame.Content>
                   <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
@@ -34,7 +40,7 @@
                   </Frame>
                 </Frame.Content>
 
-              </Frame>
+              </Frame>-->
 
             </ViewCell>
           </DataTemplate>

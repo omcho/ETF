@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedibaScanner.Views.MySubmitInfoPage"
              xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials"
              Title ="Opšte Informacije">
   
   <ContentPage.Content>
@@ -17,6 +18,8 @@
         <StackLayout VerticalOptions = "FillAndExpand" Spacing = "0" Orientation="Vertical">
                  <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
+                      <fe:BindablePicker x:Name="pickerKingdom" ItemsSource="{Binding Kingdom}" SelectedItem="{Binding KingdomSelected, Mode=TwoWay}" Title ="Odaberi..."/>
+                      <!--
                       <ListView x:Name="KingdomListView" SelectedItem="{Binding KingdomSelected, Mode=TwoWay}" ItemsSource="{Binding Kingdom}"
                                 HasUnevenRows="true"
                             >
@@ -27,7 +30,7 @@
             
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+      </ListView>-->
                     </Frame.Content>
               </Frame>
           </StackLayout>
@@ -39,7 +42,10 @@
                              <StackLayout VerticalOptions = "FillAndExpand" Orientation="Vertical">  
                  <Frame Margin ="5" Padding="10"  OutlineColor="Gray" BackgroundColor="White">
                     <Frame.Content>
-                      <ListView x:Name="HabitatListView" SelectedItem="{Binding HabitatSelected, Mode=TwoWay}"
+                      <fe:BindablePicker x:Name="pickerHabitat" SelectedItem="{Binding HabitatSelected, Mode=TwoWay}"
+                                ItemsSource="{Binding Habitat}" Title ="Odaberi..."/>
+
+                      <!--<ListView x:Name="HabitatListView" SelectedItem="{Binding HabitatSelected, Mode=TwoWay}"
                                 ItemsSource="{Binding Habitat}"
                                 HasUnevenRows="true"
                             >
@@ -50,7 +56,7 @@
             
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+      </ListView>-->
                     </Frame.Content>
               </Frame>
                                </StackLayout>

@@ -14,6 +14,8 @@ using System.Runtime.CompilerServices;
 using RedibaScanner.Views;
 using Plugin.Media;
 using RedibaScanner.Helpers;
+using Plugin.DeviceInfo;
+using Plugin.DeviceInfo.Abstractions;
 
 namespace RedibaScanner.ViewModels
 {
@@ -27,6 +29,7 @@ namespace RedibaScanner.ViewModels
         private Color pictureLocationTaken;
         private Color tubeScanned;
         private Color submitInfoTaken;
+        private Platform platform;
 
         public Color PictureLocationTaken
         {
@@ -114,6 +117,7 @@ namespace RedibaScanner.ViewModels
         
         public MySubmitPageViewModel(INavigation navigation)
         {
+            platform = CrossDeviceInfo.Current.Platform;
             Navigation = navigation;
             ScanTubeCommand = new Command(onScanTubeButton);
             PictureSpeciesCommand = new Command(PictureSpecies);
@@ -166,17 +170,20 @@ namespace RedibaScanner.ViewModels
 
                 SubmitInfo.SpeciesImage.ImageLocation = file.Path;
                 ContentPage imagePage = new ContentPage();
-                imagePage.ToolbarItems.Add(new ToolbarItem("Spasi", "info-icon.png", () =>
+                imagePage.ToolbarItems.Add(new ToolbarItem("Spasi", null, () =>
                 {
                     App.Current.MainPage.DisplayAlert("Uspjeh", "Uspješno odabrana slika vrste!", "OK");
                     PictureSpeciesTaken = Color.LightGreen;
                     Navigation.PopAsync();
-                }));
-                imagePage.ToolbarItems.Add(new ToolbarItem("Ponovo slikaj", "info-icon.png", () =>
+                }, ToolbarItemOrder.Primary));
+                if (platform != Platform.iOS)
+                imagePage.ToolbarItems.Add(new ToolbarItem("Ponovo slikaj", null, () =>
                 {
                     PictureSpecies();
                     Navigation.PopAsync();
-                }));
+                }, ToolbarItemOrder.Primary));
+                
+
                 var myImage = new Xamarin.Forms.Image()
                 {
                     Source = ImageSource.FromStream(() =>
@@ -195,7 +202,7 @@ namespace RedibaScanner.ViewModels
                     Constraint.RelativeToParent((parent) => { return parent.Width; }),
                     Constraint.RelativeToParent((parent) => { return parent.Height; }));
                 imagePage.Content = layout;
-                imagePage.Title = "Slika";
+                //imagePage.Title = "Slika";
                 
                 await Navigation.PushAsync(imagePage);
             }
@@ -222,17 +229,19 @@ namespace RedibaScanner.ViewModels
             else {
                 SubmitInfo.LocationImage.ImageLocation = file.Path;
                 ContentPage imagePage = new ContentPage();
-                imagePage.ToolbarItems.Add(new ToolbarItem("Spasi", "info-icon.png", () =>
+                imagePage.ToolbarItems.Add(new ToolbarItem("Spasi", null, () =>
                 {
                     App.Current.MainPage.DisplayAlert("Uspjeh", "Uspješno odabrana slika lokacije!", "OK");
                     PictureLocationTaken = Color.LightGreen;
                     Navigation.PopAsync();
-                }));
-                imagePage.ToolbarItems.Add(new ToolbarItem("Ponovo slikaj", "info-icon.png", () =>
-                {
-                    PictureLocation();
-                    Navigation.PopAsync();
-                }));
+                }, ToolbarItemOrder.Primary));
+                if (platform != Platform.iOS)
+                    imagePage.ToolbarItems.Add(new ToolbarItem("Ponovo slikaj", null, () =>
+                                {
+                                    PictureSpecies();
+                                    Navigation.PopAsync();
+                                }, ToolbarItemOrder.Primary));
+
                 var myImage = new Xamarin.Forms.Image()
                 {
                     Source = ImageSource.FromStream(() =>

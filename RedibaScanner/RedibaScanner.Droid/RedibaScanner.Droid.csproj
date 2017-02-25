@@ -69,10 +69,26 @@
       <HintPath>..\..\packages\FrazzApps.Xamarin.Forms.Geolocator.1.1.1-alpha\lib\MonoAndroid\FrazzApps.Xamarin.Geolocator.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FreshEssentials, Version=1.0.6234.27073, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshEssentials.2.1.3\lib\MonoAndroid10\FreshEssentials.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FreshEssentials.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshEssentials.2.1.3\lib\MonoAndroid10\FreshEssentials.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Plugin.CurrentActivity, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.DeviceInfo, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.DeviceInfo.2.1.2\lib\MonoAndroid10\Plugin.DeviceInfo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.DeviceInfo.Abstractions, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.DeviceInfo.2.1.2\lib\MonoAndroid10\Plugin.DeviceInfo.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.Geolocator, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

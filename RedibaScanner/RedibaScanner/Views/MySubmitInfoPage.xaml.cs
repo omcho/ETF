@@ -14,6 +14,7 @@ namespace RedibaScanner.Views
         public MySubmitInfoPage()
         {
             InitializeComponent();
+
             /*AdditionalImagess.ItemSelected += (sender, args) =>
             {
                 var image = args.SelectedItem as Models.Image;
